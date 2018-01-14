@@ -1,0 +1,13 @@
+nav {
+  height: 50px;
+}
+
+nav h1 a{
+  font-size: 0.8em;
+}
+
+@media screen and (min-device-width: 560px) {
+  .filter-options h2 {
+    font-size: 1.0em;
+  }
+}

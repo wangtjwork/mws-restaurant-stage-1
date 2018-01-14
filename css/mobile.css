@@ -1,0 +1,22 @@
+.filter-options {
+  height:70px;
+  flex-wrap: wrap;
+}
+
+.filter-options h2 {
+  flex: 0 1 100%;
+  margin-top: 5px;
+}
+
+.filter-options select {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 46%;
+}
+
+#restaurants-list li {
+  margin-left: auto;
+  margin-right: auto;
+}

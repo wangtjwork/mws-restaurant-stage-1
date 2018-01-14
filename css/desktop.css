@@ -1,15 +1,3 @@
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-}
-
-.filter-options {
-  display: flex;
-  align-items: center;
-}
-
 #restaurants-list {
   display: flex;
   -webkit-flex-wrap: wrap;
