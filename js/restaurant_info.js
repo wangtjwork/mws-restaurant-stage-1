@@ -58,7 +58,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = 'Picture of restaurant' + restaurant.name;
+  image.alt = 'Picture of restaurant ' + restaurant.name;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -69,6 +69,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   }
   // fill reviews
   fillReviewsHTML();
+  skipGoogleMap();
 }
 
 /**
@@ -98,6 +99,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  title.tabindex = '-1';
   container.appendChild(title);
 
   if (!reviews) {
@@ -121,7 +123,7 @@ createReviewHTML = (review) => {
   const header = document.createElement('div');
   header.className = 'review-header';
 
-  const name = document.createElement('p');
+  const name = document.createElement('h4');
   name.className = 'review-name';
   name.innerHTML = review.name;
   header.appendChild(name);
@@ -175,4 +177,23 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+skipGoogleMap = () => {
+  const homeButton = document.querySelector('#breadcrumb li a');
+  const restName = document.querySelector('#restaurant-name');
+
+  homeButton.addEventListener('keydown', function(event) {
+    if (event.keyCode === 9) { // press tab, go to restaruant name
+      event.preventDefault();
+      restName.focus();
+    }
+  });
+
+  restName.addEventListener('keydown', function(event) {
+    if (event.shiftKey && event.keyCode === 9) { // shift + tab, go back to home home button
+      event.preventDefault();
+      homeButton.focus();
+    }
+  });
 }
