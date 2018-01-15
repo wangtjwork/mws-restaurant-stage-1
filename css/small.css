@@ -6,8 +6,25 @@ nav h1 a{
   font-size: 0.8em;
 }
 
-@media screen and (min-device-width: 560px) {
-  .filter-options h2 {
-    font-size: 1.0em;
-  }
+#breadcrumb {
+  padding-left: 5%;
+}
+
+#restaurant-container,
+#reviews-container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#restaurant-name {
+  font-size: 1.5em;
+}
+
+#reviews-container h2 {
+  font-size: 1.8em;
+}
+
+#footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
