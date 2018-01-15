@@ -194,7 +194,7 @@ skipGoogleMap = () => {
     }
   });
 
-  neighborSelect.addEventListener('keypress', function(event) {
+  neighborSelect.addEventListener('keydown', function(event) {
     if (event.shiftKey && event.keyCode === 9) { // shift + tab on select will go to heading
       event.preventDefault();
       heading.focus();

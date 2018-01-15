@@ -290,18 +290,20 @@ nav h1 a {
 	background-color: #252831;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	height: 45px;
 }
 
-#reviews-list li .review-header p.review-name {
+#reviews-list li .review-header h3.review-name {
 	color: #fff;
 	padding-left: 20px;
-	padding-top: 10px;
+	margin-bottom: 0px;
 }
 
 #reviews-list li .review-header p.review-date {
 	color: #aaa;
 	padding-right: 25px;
-	padding-top: 10px;
+	margin-bottom: 0px;
 }
 
 #reviews-list li .review-rating-container {
