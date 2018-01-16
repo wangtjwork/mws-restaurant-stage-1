@@ -280,7 +280,7 @@ nav h1 a {
   overflow: hidden;
   padding: 0 0 20px;
   position: relative;
-  width: 85%;
+  width: 100%;
 }
 #reviews-list li p {
   margin: 0 0 10px;
@@ -294,7 +294,7 @@ nav h1 a {
 	height: 45px;
 }
 
-#reviews-list li .review-header h3.review-name {
+#reviews-list li .review-header .review-name {
 	color: #fff;
 	padding-left: 20px;
 	margin-bottom: 0px;

@@ -10,7 +10,6 @@ var markers = [];
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
-  skipGoogleMap();
 });
 
 /**
@@ -142,10 +141,10 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = 'Picture of ' + restaurant.name;
+  image.alt = 'Picture of restaurant ' + restaurant.name + ', with ' + restaurant['cuisine_type'] + ' food style';
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -177,27 +176,5 @@ addMarkersToMap = (restaurants = self.restaurants) => {
       window.location.href = marker.url
     });
     self.markers.push(marker);
-  });
-}
-
-/*
- * Add focus for accessibility
- */
-skipGoogleMap = () => {
-  const heading = document.querySelector('h1 a');
-  console.log(heading);
-  const neighborSelect = document.querySelector('#neighborhoods-select');
-  heading.addEventListener('keydown', function(event) {
-    if (event.keyCode === 9) { // tab on heading will go to select
-      event.preventDefault();
-      neighborSelect.focus();
-    }
-  });
-
-  neighborSelect.addEventListener('keydown', function(event) {
-    if (event.shiftKey && event.keyCode === 9) { // shift + tab on select will go to heading
-      event.preventDefault();
-      heading.focus();
-    }
   });
 }

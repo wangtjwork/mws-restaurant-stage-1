@@ -69,8 +69,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   }
   // fill reviews
   fillReviewsHTML();
-  skipGoogleMap();
-  focusOnReviews();
 }
 
 /**
@@ -98,9 +96,8 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
-  title.setAttribute('tabindex', '-1');
   container.appendChild(title);
 
   if (!reviews) {
@@ -124,7 +121,7 @@ createReviewHTML = (review) => {
   const header = document.createElement('div');
   header.className = 'review-header';
 
-  const name = document.createElement('h3');
+  const name = document.createElement('h4');
   name.className = 'review-name';
   name.innerHTML = review.name;
   header.appendChild(name);
@@ -178,52 +175,4 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-skipGoogleMap = () => {
-  const homeButton = document.querySelector('#breadcrumb li a');
-  const restName = document.querySelector('#restaurant-name');
-
-  homeButton.addEventListener('keydown', function(event) {
-    if (!event.shiftKey && event.keyCode === 9) { // press tab, go to restaruant name
-      event.preventDefault();
-      restName.focus();
-    }
-  });
-
-  restName.addEventListener('keydown', function(event) {
-    if (event.shiftKey && event.keyCode === 9) { // shift + tab, go back to home button
-      event.preventDefault();
-      homeButton.focus();
-    }
-  });
-}
-
-focusOnReviews = () => {
-  const restName = document.querySelector('#restaurant-name');
-  const reviewHead = document.querySelector('#reviews-container h2');
-  const footer = document.querySelector('#footer');
-
-  restName.addEventListener('keydown', function(event) {
-    if (!event.shiftKey && event.keyCode === 9) { // press tab, go to reviews section
-      event.preventDefault();
-      reviewHead.focus();
-    }
-  });
-
-  reviewHead.addEventListener('keydown', function(event) {
-    if (event.shiftKey && event.keyCode === 9) { // shift + tab, go back to restaurant section
-      event.preventDefault();
-      restName.focus();
-    }
-  });
-
-
-  // footer shift + tab not to go back to google map
-  footer.addEventListener('keydown', function(event) {
-    if (event.shiftKey && event.keyCode === 9) { // shift + tab, go back to reviews heading
-      event.preventDefault();
-      reviewHead.focus();
-    }
-  });
 }
